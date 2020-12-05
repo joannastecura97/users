@@ -10,14 +10,14 @@ public class Main {
 
         while (true){
             TimeUnit.SECONDS.sleep(15);
-            try (Connection conn = DriverManager.getConnection("jdbc:mysql://Full2020_94878:3306/usersTest", "JStecura", "");
+            try (Connection conn = DriverManager.getConnection("jdbc:mysql://Full2020_94878:3306/users", "JStecura", "root");
                  Statement statement = conn.createStatement())
 
             {
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 statement.executeUpdate("CREATE TABLE IF NOT EXISTS Users (ID int NOT NULL AUTO_INCREMENT, login varchar(255), haslo varchar(255), email varchar(255), PRIMARY KEY (ID) );");
                 String value = "0";
-                while (!value.equals("5")) {
+                do {
                     System.out.println("Wybierz nr polecenia, które chcesz wykonać:\n" +
                             "Pokaż wszystkie dane - 1\n" +
                             "Dodaj użytkownika - 2\n" +
@@ -40,7 +40,7 @@ public class Main {
                             updateUser(statement);
                             break;
                     }
-                }
+                } while (!value.equals("5"))
             } catch (SQLException | ClassNotFoundException e) {
                 e.printStackTrace();
             }}
