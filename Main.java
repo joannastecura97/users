@@ -40,7 +40,7 @@ public class Main {
                             updateUser(statement);
                             break;
                     }
-                } while (!value.equals("5"))
+                } while (!value.equals("5"));
             } catch (SQLException | ClassNotFoundException e) {
                 e.printStackTrace();
             }}
